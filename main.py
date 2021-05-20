@@ -8,6 +8,7 @@ import wikipedia
 import webbrowser
 import os
 import smtplib
+import random
 
 #Initializing Speech Recognition variables 
 engine = pyttsx3.init('sapi5') # object creation
@@ -56,33 +57,64 @@ def sendEmail(to, content):
 def giveCommand():
     while True:
         query = takeCommand().lower()
-        if 'bye' or 'turn off' in query:
+        if 'bye' or 'turn off' or 'exit' in query:
+            speak("Thank You Sir, have a nice day")
+            exit()
             break
-        elif 'wikipedia' in query:
-            speak('Searching Wikipedia...')
-            query = query.replace("wikipedia", "")
-            results = wikipedia.summary(query, sentences=2)
-            speak("According to Wikipedia")
-            speak(results)
         elif 'open youtube' in query:
-            webbrowser.open("youtube.com")
-            speak("Youtube Opened")
+            webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open("youtube.com")
+
+        elif 'open gne website' in query:
+            webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open("www.gndec.ac.in")
+
         elif 'open google' in query:
-            webbrowser.open("google.com")
-        elif 'open stackoverflow' in query:
-            webbrowser.open("stackoverflow.com")
+            webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open("google.com")
+
+        elif 'open w3schools' in query:
+            webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open("w3schools.com")
+
+        elif 'the weather' in query:
+            webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open("https://www.google.com/search?q=weather")
+
+        elif 'open notepad' in query:
+            os.system('notepad')
+
+        elif 'open calculator' in query:
+            os.system('start Calculator:')
+
+        elif 'open chrome' in query:
+            codePath = "C:\\Program Files (x86)\\Google\Chrome\\Application\\chrome.exe"
+            os.startfile(codePath)
+
+        elif 'open gallery' in query:
+            codePath = "D:\\Pins"
+            os.startfile(codePath)
+        
         elif 'play music' in query:
-            music_dir = 'E:\\ hindi songs'
+            music_dir = 'D:\\Music'
             songs = os.listdir(music_dir)
-            print(songs)
-            os.startfile(os.path.join(music_dir, songs[0]))
+            randomsongs = random.choice(songs)
+            os.startfile(os.path.join(music_dir, randomsongs))
+        
+        elif query.startswith('google'):
+            speak('Searching google...')
+            query1 = query.replace("google ", "")
+            query2 = query1.replace(" ","+")
+            webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open(f"https://www.google.com/search?q={query2}")
+
+        elif query.startswith('translate'):
+            query1 = query.replace(" ","+")
+            webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open(f"https://www.google.com/search?q={query1}")
+
         elif 'the time' in query:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"Sir, the time is {strTime}")
+            
         elif 'open code' in query:
             codePath = "f:\\daman project\\jarvis.py"
             os.startfile(codePath)
-        elif 'email to' in query:
+        
+        elif 'send email to' or 'email' in query:
             try:
                 speak("To whom? ")
                 to = takeCommand()
@@ -93,16 +125,15 @@ def giveCommand():
             except Exception as e:
                 print(e)
                 speak("Sorry! I am not able to send this email")
+        else:
+            speak('Searching google...')
+            query2 = query.replace(" ", "+")
+            webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open(f"https://www.google.com/search?q={query2}")
 
         speak("Anything else? ")
 
-
 #Initializing Face Recognition variables 
-
-
 #Face Recognization Code
-#pip3 frezze > requirements.txt 
-
 def findEncodings(images):
     encodeList = []
     for img in images:
