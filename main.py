@@ -25,20 +25,23 @@ def wishMe(name):
     hour = int(datetime.datetime.now().hour)
     if hour>=0 and hour<12:
         speak("Good Morning!"+name)
+
     elif hour>=12 and hour<18:
         speak("Good Afternoon!"+name)
+
     else:
         speak("Good Evening! "+name)
-    speak("Jarvis Here, Please tell me, how may I help you?")
+    speak("Hi, Jarvis Here, How may I help You?")
 
 def takeCommand():
     r = sr.Recognizer()
     with sr.Microphone() as source:
         speak("I'm Listening...")
+        r.energy_threshold=800
         r.pause_threshold = 1
         audio = r.listen(source)
     try:
-        speak("Okay")
+        speak("Okay! ")
         query = r.recognize_google(audio, language='en-in')
         print(f"User said: {query}\n")
     except Exception as e:
@@ -57,24 +60,28 @@ def sendEmail(to, content):
 def giveCommand():
     while True:
         query = takeCommand().lower()
-        if 'bye' or 'turn off' or 'exit' in query:
+        # Change the browser path according to your PC
+        web_browser_path= "C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe %s"
+        if "bye" in query:
             speak("Thank You Sir, have a nice day")
             exit()
-            break
-        elif 'open youtube' in query:
-            webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open("youtube.com")
+        if 'open youtube' in query:
+            webbrowser.get(web_browser_path).open("youtube.com")
 
-        elif 'open gne website' in query:
-            webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open("www.gndec.ac.in")
+        elif 'open g n e website' in query:
+            webbrowser.get(web_browser_path).open("www.gndec.ac.in")
+
+        elif 'open it department website' in query:
+            webbrowser.get(web_browser_path).open("it.gndec.ac.in")
 
         elif 'open google' in query:
-            webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open("google.com")
+            webbrowser.get(web_browser_path).open("google.com")
 
         elif 'open w3schools' in query:
-            webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open("w3schools.com")
+            webbrowser.get(web_browser_path).open("w3schools.com")
 
         elif 'the weather' in query:
-            webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open("https://www.google.com/search?q=weather")
+            webbrowser.get(web_browser_path).open("https://www.google.com/search?q=weather")
 
         elif 'open notepad' in query:
             os.system('notepad')
@@ -82,16 +89,16 @@ def giveCommand():
         elif 'open calculator' in query:
             os.system('start Calculator:')
 
-        elif 'open chrome' in query:
-            codePath = "C:\\Program Files (x86)\\Google\Chrome\\Application\\chrome.exe"
+        elif 'open edge' in query:
+            codePath = "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
             os.startfile(codePath)
 
         elif 'open gallery' in query:
-            codePath = "D:\\Pins"
+            codePath = "D://Pins"
             os.startfile(codePath)
         
         elif 'play music' in query:
-            music_dir = 'D:\\Music'
+            music_dir = 'D://Music'
             songs = os.listdir(music_dir)
             randomsongs = random.choice(songs)
             os.startfile(os.path.join(music_dir, randomsongs))
@@ -100,21 +107,38 @@ def giveCommand():
             speak('Searching google...')
             query1 = query.replace("google ", "")
             query2 = query1.replace(" ","+")
-            webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open(f"https://www.google.com/search?q={query2}")
+            webbrowser.get(web_browser_path).open(f"https://www.youtube.com/search?q={query2}")
+
+        elif query.startswith('youtube'):
+            speak('Searching YouTube...')
+            query1 = query.replace("youtube ", "")
+            query2 = query1.replace(" ","+")
+            webbrowser.get(web_browser_path).open(f"https://www.youtube.com/results?search_query={query2}")
+
+        elif query.startswith('wikipedia'):
+            speak('Searching Wikipedia...')
+            query = query.replace("wikipedia", "")
+            results = wikipedia.summary(query, sentences=2)
+            speak("According to Wikipedia")
+            speak(results)
 
         elif query.startswith('translate'):
             query1 = query.replace(" ","+")
-            webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open(f"https://www.google.com/search?q={query1}")
+            webbrowser.get(web_browser_path).open(f"https://www.google.com/search?q={query1}")
 
-        elif 'the time' in query:
+        elif 'time' in query:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"Sir, the time is {strTime}")
+
+        elif 'date and time' in query:
+            strDate = datetime.datetime.now.strftime("%m/%d/%Y, %H:%M:%S")
+            speak(f"Sir, the date and time is {strDate}")
             
         elif 'open code' in query:
-            codePath = "f:\\daman project\\jarvis.py"
+            codePath = "f://daman project//jarvis.py"
             os.startfile(codePath)
         
-        elif 'send email to' or 'email' in query:
+        elif 'send email to' in query:
             try:
                 speak("To whom? ")
                 to = takeCommand()
@@ -125,10 +149,12 @@ def giveCommand():
             except Exception as e:
                 print(e)
                 speak("Sorry! I am not able to send this email")
+        elif "none" in query:
+            continue
         else:
-            speak('Searching google...')
+            speak('I\'m not aware, Let me Search it on google...')
             query2 = query.replace(" ", "+")
-            webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open(f"https://www.google.com/search?q={query2}")
+            webbrowser.get(web_browser_path).open(f"https://www.google.com/search?q={query2}")
 
         speak("Anything else? ")
 
@@ -144,7 +170,7 @@ def findEncodings(images):
 
 
 def markAttendance(name):
-    with open('C:/Users/japba/Desktop/Jarvis1/Attendance.csv', 'r+') as f:
+    with open('C:/Users/japba/Desktop/Projects/Jarvis/Attendance.csv', 'r+') as f:
         myDataList = f.readlines()
 
         nameList = []
@@ -164,7 +190,7 @@ def markAttendance(name):
 
  
 if __name__ == "__main__":
-    path = 'C:/Users/japba/Desktop/Jarvis1/Training_images'
+    path = 'C:/Users/japba/Desktop/Projects/Jarvis/Training_images'
     images = []
     classNames = []
     myList = os.listdir(path)
@@ -203,7 +229,7 @@ if __name__ == "__main__":
                 cv2.putText(img, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
                 #markAttendance(name)
                 print("Matched")
-                wishMe(name)
+                wishMe(name.lower())
                 giveCommand()
 
         #cv2.imshow('Webcam', img)
