@@ -5,7 +5,7 @@ import time
 import json
 
 #Opening The Settings.json file
-with open('c:/Users/japba/Desktop/Projects/Jarvis/Jarvis1/settings.json','r') as file:
+with open('c:/Users/japba/Desktop/Projects/Jarvis/settings.json','r') as file:
     settings = json.load(file)
 
 URL = settings['url'] # the URL we are going to use
@@ -79,6 +79,8 @@ def run():
     while True:
         result = checking_price()
         #time.sleep(settings['remind-time']) #It is set to run the program once in an hour! You can change by changing the value in seconds!
+        print(result)
         return result
+        
 
 run()

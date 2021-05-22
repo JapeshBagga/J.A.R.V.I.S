@@ -1,4 +1,6 @@
-
+pywin32==300
+cmake==3.20.2
+dlib==19.22.0
 absl-py==0.11.0
 argon2-cffi==20.1.0
 astunparse==1.6.3
@@ -13,8 +15,6 @@ certifi==2020.12.5
 cffi==1.14.5
 chardet==4.0.0
 click==7.1.2
-### cmake==3.18.2.post1  Creating error 
-###### dlib==19.18.0
 colorama==0.4.4
 comtypes==1.1.9
 DateTime==4.3
@@ -69,7 +69,6 @@ protobuf==3.14.0
 py4j==0.10.9
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
-PyAudio           Failed To build wheel for pyaudio $$$$$$$$ Error
 pycparser==2.20
 Pygments==2.8.1
 pyparsing==2.4.7
@@ -78,7 +77,6 @@ pyrsistent==0.17.3
 python-dateutil==2.8.1
 pyttsx3==2.90
 pytz==2020.5
-pywin32==300
 pywinpty==0.5.7
 PyYAML==5.4
 pyzmq==22.0.3
@@ -114,5 +112,3 @@ wincertstore==0.2
 wrapt==1.12.1
 zipp==3.4.0
 zope.interface==5.2.0
-
-     CMake must be installed to build the following extensions: dlib ERORRRR
