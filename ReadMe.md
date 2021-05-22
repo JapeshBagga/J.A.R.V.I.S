@@ -2,8 +2,7 @@
 
 ## About Project 
 
-### Jarvis is a virtual assistant like Siri and Alexa with additional face recognition based secruity policy. With the help of face recognition JARVIS will greet the based on who is using the device. we have tried to simulate using Python Programmming Language and some additional libraries.
-This assitant recognises speech and face of the user and responds accordingly. 
+### Jarvis is a virtual assistant like Siri and Alexa with additional face recognition based secruity mechanism. The assitant recognises speech and face of the user and responds accordingly. 
 
 Various Features and tasks performed by this assistant are:
 
@@ -62,11 +61,14 @@ path of your local directories in the source code to avoid error.
     ```pip install PyAudio ```
 
 ---
+
 ## To Run this program on Startup
 ### Linux
 https://help.ubuntu.com/stable/ubuntu-help/startup-applications.html.en
+
 ### Windows
 https://support.microsoft.com/en-in/help/4026268/windows-10-change-startup-apps
+
 ---
 
 ### The Project is now ready to use !!
