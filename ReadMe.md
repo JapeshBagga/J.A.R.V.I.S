@@ -7,16 +7,16 @@ This assitant recognises speech and face of the user and responds accordingly.
 
 Various Features and tasks performed by this assistant are:
 
-1. It first wishes and greet the user according to the person using it.
-2. It can retreive the information from Wikipedia.
-3. It can open Google for you.
-4. It can open Youtube for you.
-5. It can open Python Interpreter(IDLE),Notepad for you.
-6. It can open Stackoverflow for you.
-7. It can open Instagram,Faccebook, other social media apps for you.
-8. It can open code editor like Vs-Code,Code-Blocks etc of your choice.
-9. It can report current time to the user.
-10. It can send Email to the intended user for you.
+1. It first wishes and greet the user according to the person recognized by the face recognizer.
+2. It can retreive the information from **Wikipedia**.
+3. It can report current date and time to the you.
+4. It can open Google, Youtube, Stackoverflow, Instagram, Facebook, Tinder and other **social media** apps for you.
+5. It can open Python Interpreter(IDLE), Notepad, Calculator and other **System Softwares** for you.
+6. It can open code editor or **IDE** like Vs-Code,Code-Blocks and any other IDE etc of your choice.
+7. It can **send Email** to the intended user for you.
+8. Equipped with **face recognition.**
+9. You track prices of the given product from the **E-Commerce** Websites according to the URL mentioned and can also tell it will be in your budget or not according to the settings done for the program.
+10. 
 
 
 ## How to Use
@@ -38,10 +38,21 @@ cd J.A.R.V.I.S
 pip install -r requirements.txt
 ```
 
-3. Run facemask.py by typing the following command on your Command Prompt:
+3.  Now edit the **settings.json** file using your favorite code editor(Example: Sublime text editor, VSCode, Vim).
+
+4. Change ```budget:0```  value to your budget. (Example: ```budget:999```)
+
+5. Replace the link in **URL** with your link. (Example: ```url:'https://www.amazon.in/G731GT-Graphics-i5-9300H-Windows-G731GT-AU022T/dp/B07S36XJ8Q/'```)
+
+6. Change the **user agent** according to your [**user agent**](https://www.google.com/search?q=my+user+agent&oq=my+user&aqs=chrome.1.69i57j0l5.2294j1j7&sourceid=chrome&ie=UTF-8). (Example: ```headers = {"User-Agent": 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.75 Safari/537.36'} ```)
+
+7. Now save the file and run **main.py** by typing the following command on your Command Prompt:
+
 ```
 python main.py
 ```
+
+4.
 
 Note: 1. To open code editor of your choice and python interpreter(IDLE) you have to provide
 path of your local directories in the source code to avoid error.
@@ -49,5 +60,14 @@ path of your local directories in the source code to avoid error.
     ```pip install pipwin ```
    then run this command
     ```pip install PyAudio ```
-    
-#### The Project is now ready to use !!
+
+---
+## To Run this program on Startup
+### Linux
+https://help.ubuntu.com/stable/ubuntu-help/startup-applications.html.en
+### Windows
+https://support.microsoft.com/en-in/help/4026268/windows-10-change-startup-apps
+---
+
+### The Project is now ready to use !!
+### [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
