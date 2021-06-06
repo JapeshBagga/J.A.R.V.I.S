@@ -72,4 +72,5 @@ https://support.microsoft.com/en-in/help/4026268/windows-10-change-startup-apps
 ---
 
 ### The Project is now ready to use !!
+                                                [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fgjbae1212%2Fhit-counter)](https://hits.seeyoufarm.com)                    
 ### [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
