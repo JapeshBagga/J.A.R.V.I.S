@@ -7,6 +7,7 @@ import os
 import smtplib
 import random 
 import price_tracker
+import vaccine_tracker
 
 #Initializing Speech Recognition variables 
 engine = pyttsx3.init('sapi5') # object creation
@@ -143,6 +144,22 @@ def listenCommand():
             except Exception as e:
                 print(e)
                 speak("Sorry! I am not able to run price tracker!")
+        elif 'vaccine tracker' in query:
+            try:
+                result = vaccine_tracker.findByPin()
+                if type(result) is list:
+                    intro = "There are {} Vaccination Drives ongoing near your location".format(len(result))
+                    speak(intro)
+                    n = 1
+                    for res in result:
+                        speak(n)
+                        speak(res)
+                        n+=1
+                else: 
+                    speak(result)
+            except Exception as e:
+                print(e)
+                speak("Sorry! I am not able to run vaccine tracker!")
 
         elif 'send email to' in query:
             try:
